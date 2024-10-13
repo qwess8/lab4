@@ -11,7 +11,6 @@ struct Node {
  struct Node *left; 
  struct Node *right; 
 }; 
- 
 
 struct Node *root = NULL; 
  
@@ -36,11 +35,13 @@ struct Node *CreateTree(struct Node *root, struct Node *r, int data)
   else root->right = r;  
   return r; 
  } 
+
  
  if (data > r->data) 
   CreateTree(r, r->left, data); 
- else 
-  CreateTree(r, r->right, data); 
+ else if(data < r->data)
+  CreateTree(r, r->right, data);
+ else return root;
  
  return root; 
 } 
